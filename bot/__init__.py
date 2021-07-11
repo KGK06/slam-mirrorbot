@@ -294,9 +294,9 @@ except KeyError:
 try:
     IMAGE_URL = getConfig('IMAGE_URL')
     if len(IMAGE_URL) == 0:
-        IMAGE_URL = 'https://telegra.ph/file/db03910496f06094f1f7a.jpg'
+        IMAGE_URL = 'https://telegra.ph/file/2781054672e97ea89c468.jpg'
 except KeyError:
-    IMAGE_URL = 'https://telegra.ph/file/db03910496f06094f1f7a.jpg'
+    IMAGE_URL = 'https://telegra.ph/file/2781054672e97ea89c468.jpg'
 
 IGNORE_PENDING_REQUESTS = False
 try:
@@ -316,6 +316,24 @@ try:
         UNFINISHED_PROGRESS_STR = '○'
 except KeyError:
     UNFINISHED_PROGRESS_STR = '○'
+try:
+  GB_NAME= getConfig('GB_NAME')
+    if len(GB_NAME) == 0:
+        GB_NAME = '𝗜𝗡𝗗𝗘𝗫 𝗟𝗜𝗡𝗞'
+except KeyError:
+    GB_NAME = '𝗜𝗡𝗗𝗘𝗫 𝗟𝗜𝗡𝗞'
+try:
+  IB_NAME= getConfig('IB_NAME')
+    if len(IB_NAME) == 0:
+        IB_NAME = '𝗜𝗡𝗗𝗘𝗫 𝗟𝗜𝗡𝗞'
+except KeyError:
+    IB_NAME = '𝗜𝗡𝗗𝗘𝗫 𝗟𝗜𝗡𝗞'
+try:
+  VLB_NAME= getConfig('VLB_NAME')
+    if len(VLB_NAME) == 0:
+        VLB_NAME = '𝗩𝗜𝗘𝗪 𝗟𝗜𝗡𝗞'
+except KeyError:
+    VLB_NAME = '𝗩𝗜𝗘𝗪 𝗟𝗜𝗡𝗞'
 updater = tg.Updater(token=BOT_TOKEN)
 bot = updater.bot
 dispatcher = updater.dispatcher
