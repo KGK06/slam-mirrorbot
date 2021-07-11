@@ -11,18 +11,24 @@ import threading
 
 
 def _watch(bot: Bot, update, isTar=False):
+    
+    user = update.message.from_user
+    name = f"<a href='tg://user?id={user.id}'>{user.first_name}</a>"
+    bar = "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+    msg = f"{name} <b>Has Sent:</b>\n\n{bar}\n\n"
+    
     mssg = update.message.text
     message_args = mssg.split(' ')
     name_args = mssg.split('|')
     try:
         link = message_args[1]
     except IndexError:
-        msg = f"/{BotCommands.WatchCommand} [youtube-dl supported link] [quality] |[CustomName] to mirror with youtube-dl.\n\n"
-        msg += "<b>Note: Quality and custom name are optional</b>\n\nExample of quality: audio, 144, 240, 360, 480, 720, 1080, 2160."
-        msg += "\n\nIf you want to use custom filename, enter it after |"
-        msg += f"\n\nExample:\n<code>/{BotCommands.WatchCommand} https://youtu.be/Pk_TthHfLeE 720 |Slam</code>\n\n"
-        msg += "This file will be downloaded in 720p quality and it's name will be <b>Slam</b>"
-        sendMessage(msg, bot, update)
+        msgg = f"/{BotCommands.WatchCommand} [youtube-dl supported link] [quality] |[CustomName] to mirror with youtube-dl.\n\n"
+        msgg += "<b>Note: Quality and custom name are optional</b>\n\nExample of quality: audio, 144, 240, 360, 480, 720, 1080, 2160."
+        msgg += "\n\nIf you want to use custom filename, enter it after |"
+        msgg += f"\n\nExample:\n<code>/{BotCommands.WatchCommand} https://youtu.be/Pk_TthHfLeE 720 |Slam</code>\n\n"
+        msgg += "This file will be downloaded in 720p quality and it's name will be <b>Slam</b>"
+        sendMessage(msgg, bot, update)
         return
     try:
       if "|" in mssg:
@@ -49,7 +55,9 @@ def _watch(bot: Bot, update, isTar=False):
     listener = MirrorListener(bot, update, pswd, isTar, tag)
     ydl = YoutubeDLHelper(listener)
     threading.Thread(target=ydl.add_download,args=(link, f'{DOWNLOAD_DIR}{listener.uid}', qual, name)).start()
-    sendStatusMessage(update, bot)
+    msg += f"{mssg}"
+    msg += f"\n\n{bar}\n\n<b>📊 YOUR REQUEST HAS BEEN ADDED TO /{BotCommands.StatusCommand}"
+    sendMessage(msg, bot, update)
     if len(Interval) == 0:
         Interval.append(setInterval(DOWNLOAD_STATUS_UPDATE_INTERVAL, update_all_messages))
 
