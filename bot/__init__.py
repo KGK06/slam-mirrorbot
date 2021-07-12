@@ -318,20 +318,20 @@ except KeyError:
     UNFINISHED_PROGRESS_STR = '○'
 try:
   GB_NAME= getConfig('GB_NAME')
-    if len(GB_NAME) == 0:
-        GB_NAME = '𝗜𝗡𝗗𝗘𝗫 𝗟𝗜𝗡𝗞'
+  if len(GB_NAME) == 0:
+      GB_NAME = '𝗜𝗡𝗗𝗘𝗫 𝗟𝗜𝗡𝗞'
 except KeyError:
     GB_NAME = '𝗜𝗡𝗗𝗘𝗫 𝗟𝗜𝗡𝗞'
 try:
   IB_NAME= getConfig('IB_NAME')
-    if len(IB_NAME) == 0:
-        IB_NAME = '𝗜𝗡𝗗𝗘𝗫 𝗟𝗜𝗡𝗞'
+  if len(IB_NAME) == 0:
+      IB_NAME = '𝗜𝗡𝗗𝗘𝗫 𝗟𝗜𝗡𝗞'
 except KeyError:
     IB_NAME = '𝗜𝗡𝗗𝗘𝗫 𝗟𝗜𝗡𝗞'
 try:
   VLB_NAME= getConfig('VLB_NAME')
-    if len(VLB_NAME) == 0:
-        VLB_NAME = '𝗩𝗜𝗘𝗪 𝗟𝗜𝗡𝗞'
+  if len(VLB_NAME) == 0:
+      VLB_NAME = '𝗩𝗜𝗘𝗪 𝗟𝗜𝗡𝗞'
 except KeyError:
     VLB_NAME = '𝗩𝗜𝗘𝗪 𝗟𝗜𝗡𝗞'
 updater = tg.Updater(token=BOT_TOKEN)
