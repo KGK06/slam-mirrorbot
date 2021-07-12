@@ -227,10 +227,9 @@ def _mirror(bot, update, isTar=False, extract=False):
     uri_msg = update.message.text
     user = update.message.from_user
     if user.username:
-      username = f"{user.username}""
+      name = f"<a href='tg://user?id={user.id}'>{user.username}</a>"
     else:
-      username = "-"
-    name = f"<a href='tg://user?id={user.id}'>{user.first_name}</a>"
+      name = f"<a href='tg://user?id={user.id}'>{user.first_name}</a>"
     bar = "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
     msg = f"{name} <b>Has Sent:</b>\n\n{bar}\n\n"
     mesg = update.message.text.split('\n')
